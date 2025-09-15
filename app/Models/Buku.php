@@ -3,8 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Buku extends Model
 {
-    //
+    protected $guarded = [];
+
+    public function bukus(): BelongsTo
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
+    public function penerbit(): BelongsTo
+    {
+        return $this->belongsTo(Penerbit::class);
+    }
+
+    public function kategori(): BelongsTo
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }
